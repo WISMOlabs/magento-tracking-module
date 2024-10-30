@@ -1,0 +1,54 @@
+<?php
+
+use Magento\Sales\Model\Order\Shipment;
+use Magento\Store\Model\ScopeInterface;
+
+?>
+<?php /* @var \Magento\Framework\View\Element\Template $block */ ?>
+<?php /* @var \Magento\Sales\Model\Order\Shipment $_shipment */ ?>
+<?php $_shipment = $block->getShipment() ?>
+<?php
+use Wismolabs\Tracking\Helper\Data as TrackingHelper;
+
+/** @var \Wismolabs\Tracking\Helper\Data $helper */
+$helper = $this->helper(TrackingHelper::class);
+/** @var \Magento\Sales\Model\Order $_order */
+$_order = $block->getOrder() ?>
+<?php
+   //die("OVERRIDEN");
+?>
+
+<?php if ($_shipment && $_order): ?>
+    <?php
+    if ($helper->isLinkEnabledInShippingEmail($_order->getStoreId())) {
+        echo $helper->getTrackButtonHtml($helper->getCombinedUrl($_order));
+    }
+    ?>
+
+    <?php $trackCollection = $_order->getTracksCollection($_shipment->getId()) ?>
+    <?php if ($trackCollection): ?>
+        <br />
+        <table class="shipment-track">
+            <thead>
+            <tr>
+                <th><?= $escaper->escapeHtml(__('Shipped By')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Tracking Number')) ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php /** @var Magento\Sales\Model\Order\Shipment\Track $_item */  ?>
+            <?php foreach ($trackCollection as $_item): ?>
+                <tr>
+                    <td><?= $escaper->escapeHtml($_item->getTitle()) ?>:</td>
+                    <td>
+                        <?php $url = $helper->getUrl($_order, $_item) ?>
+                        <a href="<?= $escaper->escapeUrl($url) ?>" target="_blank">
+                            <?= $escaper->escapeHtml($_item->getNumber()) ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+<?php endif; ?>

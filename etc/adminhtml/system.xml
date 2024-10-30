@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="shipping">
+            <group id="shipment_email_settings" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>WISMOlabs Order and Shipment tracking</label>
+                <field id="account_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slug</label>
+                    <comment><![CDATA[Navigate to <a href="https://app.wismolabs.com/login">WISMOlabs admin dashboard</a> and copy "slug" value from Settings - Magento Connect app]]></comment>
+                </field>
+                <field id="retailer_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Retailer ID</label>
+                    <comment><![CDATA[Navigate to <a href="https://app.wismolabs.com/login">WISMOlabs admin dashboard</a> and copy "Retailer ID:" value from Settings - Magento Connect app]]></comment>
+                </field>
+                <field id="auth_token" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Token</label>
+                    <comment>Optional. Copy the "Authorization Token" from the Magento Connect section in your WISMOlabs admin dashboard. This token securely connects your Magento store to WISMOlabs, enabling features such as additional email, SMS, webhooks, and push notifications for shipment events like "Out for Delivery," "Delivered," and "Late Shipment." It also unlocks other advanced features, including marketing, analytics, and more.</comment>
+                </field>
+                <field id="customer_attributes" translate="label" type="multiselect" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Data Fields to Pass to WISMOlabs</label>
+                    <source_model>Wismolabs\Tracking\Model\CustomerAttributes</source_model>
+                    <comment>Hold the Option (⌥) key (Mac) or Alt key (Windows/Linux) to select multiple fields. WISMOlabs already receives the minimum required data for basic features. Selecting additional fields will enhance WISMOlabs' marketing, personalization, and segmentation capabilities.</comment>
+                </field>
+                <field id="include_link_into_shipping_email" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Include WISMOlab link into Shipping Confirmation email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="include_link_into_order_confirmation_email" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Include WISMOlab link into the Order Confirmation email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use this setting carefully. It should only be set to 'Yes' if an authorization token is provided. Enabling this feature without proper configuration may result in a negative customer experience, particularly if the messaging in notifications does not align accurately with your order processing workflow.</comment>
+                </field>
+                <field id="order_button_css" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customize Email [Track My Order] Button</label>
+                    <comment><![CDATA[This code is used in Magento email notifications. Customize it to match your brand. Be sure to include the {{WISMOLINK}} placeholder, which will automatically be replaced with the tracking URL.]]></comment>
+                </field>
+                <field id="include_link_into_order_history_pages" translate="label" type="select" sortOrder="85" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Place WISMOlab link under customer's Order History pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="use_mysql_queue" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use Mysql Queue</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use MySQL for handling asynchronous tasks, like submitting order and shipment data to WISMOlabs. Warning: Set to 'No' only if you have queue service configured, as turning it off without one may cause data submission failures.</comment>
+                </field>
+                <field id="use_logs" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable detailed logging for debugging</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+		    <comment>When set to 'Yes', this will add logs to var/log/debug.log with the Wismolabs_Tracking_Helper prefix, assisting in troubleshooting any issues.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
