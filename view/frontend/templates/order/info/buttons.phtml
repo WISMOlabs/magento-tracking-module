@@ -1,0 +1,43 @@
+<?php
+// phpcs:disable Magento2.Templates.ThisInTemplate
+?>
+<div class="actions">
+    <?php $_order = $block->getOrder() ?>
+    <?php if ($this->helper(\Magento\Sales\Helper\Reorder::class)->canReorder($_order->getEntityId())): ?>
+        <a href="#" data-post='<?=
+        /* @noEscape */ $this->helper(\Magento\Framework\Data\Helper\PostHelper::class)
+            ->getPostData($block->getReorderUrl($_order))
+        ?>' class="action order">
+            <span><?= $escaper->escapeHtml(__('Reorder')) ?></span>
+        </a>
+    <?php endif ?>
+
+    <?php
+    /** @var \Wismolabs\Tracking\Helper\Data $helper */
+    $helper = $this->helper(\Wismolabs\Tracking\Helper\Data::class);
+    ?>
+    <?php if ($helper->isLinkEnabledInUserAccountOrdersPage($_order->getStoreId())): ?>
+        <?php $allShipmentsUrl = $helper->getCombinedUrl($_order) ?>
+        <a href="#" class="action track" title="<?= $escaper->escapeHtml(__('Track All Shipments')) ?>"
+           data-mage-init='{"popupWindow": {
+                "windowURL":"<?= $escaper->escapeHtml($allShipmentsUrl); ?>",
+                "windowName":"trackorder",
+                "width":800,
+                "height":600,
+                "left":0,
+                "top":0,
+                "resizable":1,
+                "scrollbars":1
+            }}'>
+            <span><?= $escaper->escapeHtml(__('Track All Shipments'))  ?></span>
+        </a>
+    <?php endif; ?>
+
+    <a href="<?= $escaper->escapeUrl($block->getPrintUrl($_order)) ?>"
+       class="action print"
+       target="_blank"
+       rel="noopener">
+        <span><?= $escaper->escapeHtml(__('Print Order')) ?></span>
+    </a>
+    <?= $block->getChildHtml() ?>
+</div>

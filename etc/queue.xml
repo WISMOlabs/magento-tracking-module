@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/queue.xsd">
+    <broker topic="wismolabs_track_info.send" exchange="magento-db" type="db">
+        <queue name="wismolabs_track_info.send" consumer="wismolabs_track_info.send" consumerInstance="Magento\Framework\MessageQueue\Consumer" handler="Wismolabs\Tracking\Model\SendTrackHandler::process"/>
+    </broker>
+</config>
