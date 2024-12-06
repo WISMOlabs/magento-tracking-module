@@ -1,10 +1,10 @@
 # WISMOlabs Extension for Magento 2
 
-[WISMOlabs Order & Shipping Tracking with Post-Purchase Tools extension for Magento](https://wismolabs.com/magento/?utm_source=github&utm_medium=magento&utm_campaign=extension) connects your store to the WISMOlabs platform, providing enhanced real-time tracking capabilities across 750+ carriers, 3PLs, and delivery companies. It also offers advanced notification capabilities, including programmable emails, SMS, and webhooks using the Liquid template engine. Platform has a built-in marketing engine that suggests, upsells, and cross-sells products within notifications, branded tracking pages, and other customer-facing components, creating better post-purchase experiences.
+[Order & Shipping Tracking Suite extension for Magento](https://wismolabs.com/magento/?utm_source=github&utm_medium=magento&utm_campaign=extension) connects your store to the WISMOlabs platform, providing enhanced real-time tracking capabilities across 750+ carriers, 3PLs, and delivery companies. It also offers advanced notification capabilities, including programmable emails, SMS, and webhooks using the Liquid template engine. Platform has a built-in marketing engine that suggests, upsells, and cross-sells products within notifications, branded tracking pages, and other customer-facing components, creating better post-purchase experiences.
 
 ## Important Information
 
-WISMOlabs Order & Shipping Tracking with Post-Purchase Tools extension for Magento 2 does not require a WISMOlabs account to try. However, it is advisable to [create an account]([https://wismolabs.com/magento/](https://wismolabs.com/magento/?utm_source=github&utm_medium=magento&utm_campaign=extension)) to configure the branding of customer-facing components.
+Order & Shipping Tracking Suite extension for Magento 2 does not require a WISMOlabs account to try. However, it is advisable to [create an account]([https://wismolabs.com/magento/](https://wismolabs.com/magento/?utm_source=github&utm_medium=magento&utm_campaign=extension)) to configure the branding of customer-facing components.
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ Magento 2: This extension requires a working installation of Magento 2.
 
 ## Installation Instructions
 
-To install the WISMOlabs Order & Shipping Tracking with Post-Purchase Tools extension, follow these steps:
+To install the Order & Shipping Tracking Suite extension, follow these steps:
 
 1. Log into Your Magento Server
 
@@ -30,7 +30,7 @@ To install the WISMOlabs Order & Shipping Tracking with Post-Purchase Tools exte
 
 ## Configuration Instructions
 
-After installing the WISMOlabs Order & Shipping Tracking with Post-Purchase Tools extension for Magento, you need to configure it in the Magento admin panel:
+After installing the Order & Shipping Tracking Suite extension for Magento, you need to configure it in the Magento admin panel:
 
 1.  **Step 1: Navigate to WISMOlabs Settings**
 
